@@ -7,12 +7,20 @@ const app = express();
 
 app.get('/', (req, res) => {
   const now = new Date();
-  const day = now.getDay();
-  const utcTime = now.toISOString;
-  const { slack_name, track } = req.params;
   const repo = 'https://github.com/Sn0wF1re/HNGx_backend.git';
-  const file = 'https://github.com/Sn0wF1re/HNGx_backend/stage_one/server.js.git';
+  const file = 'https://github.com/Sn0wF1re/HNGx_backend/blob/main/stage_one/server.js';
+
+  const payload = {
+    'slack_name': req.params.slack_name,
+    'current_day': now.toLocaleString('en-us', { weekday: 'long' }),
+    'utc_time': now.toISOString(),
+    'track': req.params.track,
+    'github_file_url': file,
+    'github_repo_url': repo,
+    'status_code': 200
+  };
   
+  res.send(payload);
 });
 
 const port = process.env.PORT || 3000;
