@@ -4,8 +4,9 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
+const uri = '/api';
 
-app.get('/', (req, res) => {
+app.get(uri, (req, res) => {
   const now = new Date();
   const repo = 'https://github.com/Sn0wF1re/HNGx_backend.git';
   const file = 'https://github.com/Sn0wF1re/HNGx_backend/blob/main/stage_one/server.js';
