@@ -9,12 +9,13 @@ app.get('/', (req, res) => {
   const now = new Date();
   const repo = 'https://github.com/Sn0wF1re/HNGx_backend.git';
   const file = 'https://github.com/Sn0wF1re/HNGx_backend/blob/main/stage_one/server.js';
+  const { slack_name, track } = req.query;
 
   const payload = {
-    'slack_name': req.params.slack_name,
+    'slack_name': slack_name,
     'current_day': now.toLocaleString('en-us', { weekday: 'long' }),
     'utc_time': now.toISOString(),
-    'track': req.params.track,
+    'track': track,
     'github_file_url': file,
     'github_repo_url': repo,
     'status_code': 200
