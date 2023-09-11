@@ -1,0 +1,23 @@
+@startuml
+
+class Person {
+  - id: ObjectId
+  - name: String
+}
+
+class PersonRoutes {
+  + createPerson(req: Request, res: Response, next: NextFunction): void
+  + retrieveAllPersons(req: Request, res: Response, next: NextFunction): void
+  + retrievePersonById(req: Request, res: Response, next: NextFunction): void
+  + updatePerson(req: Request, res: Response, next: NextFunction): void
+  + deletePerson(req: Request, res: Response, next: NextFunction): void
+}
+
+class ExpressApp {
+  + listen(port: Number): void
+}
+
+PersonRoutes --> Person: Manages
+ExpressApp --> PersonRoutes: Uses
+
+@enduml
